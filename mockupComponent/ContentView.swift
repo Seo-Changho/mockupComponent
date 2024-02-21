@@ -26,11 +26,6 @@ struct ContentView: View {
                         .padding()
                 }
                 
-                NavigationLink(destination: tableview()) {
-                    Text("Go to tableView")
-                        .padding()
-                }
-                
             }
             .navigationTitle("mockupComponent")
         }
