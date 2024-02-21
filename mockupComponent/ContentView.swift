@@ -9,13 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List{
+                NavigationLink(destination: tableview()) {
+                    Text("Go to tableView")
+                        .padding()
+                }
+                
+                NavigationLink(destination: tableview()) {
+                    Text("Go to tableView")
+                        .padding()
+                }
+                
+                NavigationLink(destination: tableview()) {
+                    Text("Go to tableView")
+                        .padding()
+                }
+                
+                NavigationLink(destination: tableview()) {
+                    Text("Go to tableView")
+                        .padding()
+                }
+                
+            }
+            .navigationTitle("mockupComponent")
         }
-        .padding()
     }
 }
 
