@@ -16,8 +16,8 @@ struct ContentView: View {
                         .padding()
                 }
                 
-                NavigationLink(destination: tableview()) {
-                    Text("Go to tableView")
+                NavigationLink(destination: popupView()) {
+                    Text("Go to popupView")
                         .padding()
                 }
                 

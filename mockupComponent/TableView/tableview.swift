@@ -58,12 +58,13 @@ struct tableview: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
-    
-    
+
     func move(from source: IndexSet, to destination: Int){
         itemArray.move(fromOffsets: source, toOffset: destination)
     }
+    
 }
 
 struct editView: View {
