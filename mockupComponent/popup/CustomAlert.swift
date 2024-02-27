@@ -14,63 +14,58 @@ struct alertOption: Identifiable {
     var contentType:contentType
 }
 
+struct buttonOption: Identifiable {
+    var id = UUID()
+    var option:Any?
+    var buttonType:buttonType
+}
+
+/// popup에 들어갈 컨텐츠 case를 지정하여 확장한다.
 enum contentType {
     case title
     case message
+    case checkbox
 }
 
+/// popup에 들어갈 button case를 지정하여 확장한다.
 enum buttonType {
-    case onebutton
-    case twobutton
+    case okbutton
+    case cancelbutton
     case checkbutton
-    
-    var rightActionText: String {
-        switch self {
-        case .onebutton, .twobutton, .checkbutton:
-            return "확인"
-        }
-    }
-    
-    var leftActionText: String {
-        switch self {
-        case .twobutton, .checkbutton:
-            return "취소"
-        default: return ""
-        }
-    }
 }
 
 
 /**
- CustomAlert를 구성하였습니다.
+ CustomAlert를 구성
  
  ZStack으로 앞뒤 배열로 background와 alert창을 구성한다.
  ```swift
  ZStack{ }
  ```
- 그 안에 HStack으로 양쪽 margin값을 Spacer()로 줍니다.
- 가운데 VStack안에 원하는 컨텐츠를 optionable하게 설정할 수 있도록 합니다.(alertType)
- 버튼 스타일을 지정합니다
+ alertOption : VStack으로 원하는 컨텐츠를 optionable하게 설정할 수 있도록 합니다
+ 
+ buttonOption : 사용할 버튼의 종류를 선택합니다.
  
  ```swift
- HStack{ Spacer() VStack() Spacer() }
+ VStack{
+    alertOption
+    buttonOption
+ }
  ```
- ![customAlert basic](customAlert_basic.png)
+ ![customAlert basic](customalert_basic.png)
  */
 struct CustomAlert: View {
     
-    /// Flag used to dismiss the alert on the presenting view
     @Binding var presentAlert: Bool
     
-    /// The alert type being shown
     @State var alertOptions: [alertOption] = []
-    @State var buttonType : buttonType = .onebutton
+    @State var buttonOptions : [buttonOption] = []
+    @State private var isOn = false
     
-    /// based on this value alert buttons will show vertically
     var isShowVerticalButtons = false
     
-    var leftButtonAction: (() -> ())?
-    var rightButtonAction: (() -> ())?
+    var cancelButtonAction: (() -> ())?
+    var okButtonAction: (() -> ())?
     
     let verticalButtonsHeight: CGFloat = 80
     
@@ -104,45 +99,69 @@ struct CustomAlert: View {
                                     .multilineTextAlignment(.center)
                                     .lineLimit(nil)
                                     .fixedSize(horizontal: false, vertical: true)
+                            case .checkbox:
+                                let value = option.option as? String ?? ""
+                                Button(action: { self.isOn.toggle() }) {
+                                    HStack(alignment: .top, spacing: 10) {
+                                        Image(self.isOn ? "checkbox_button_s" : "checkbox_button_n")
+                                        Text(value)
+                                    }
+                                }
+                                .foregroundColor(Color(red: 52/255,green: 57/255,blue: 68/255))
+                                .fixedSize(horizontal: false, vertical: true)
                             }
-                            
                         }
                         
                         
                         /// 하단 버튼 영역
                         HStack(spacing: 0) {
-                            //left button
-                            if (!buttonType.leftActionText.isEmpty) {
-                                Button {
-                                    leftButtonAction?()
-                                } label: {
-                                    Text(buttonType.leftActionText)
-                                        .padding()
-                                        .frame(minWidth: 0, maxWidth: geometry.size.width*0.5, minHeight: 0, maxHeight: .infinity)
-                                        .background(.white)
-                                        .font(.system(size: 12, weight: .bold))
-                                        .foregroundColor(Color(red: 52/255,green: 57/255,blue: 68/255))
-                                        .cornerRadius(30)
-                                        .multilineTextAlignment(.center)
-                                        .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color(red: 52/255,green: 57/255,blue: 68/255), lineWidth: 1))
+                            ForEach(Array(buttonOptions.enumerated()), id: \.offset) { index, button in
+                                switch button.buttonType {
+                                case .cancelbutton:
+                                    Button {
+                                        cancelButtonAction?()
+                                    } label: {
+                                        Text("취소")
+                                            .padding()
+                                            .frame(minWidth: 0, maxWidth: geometry.size.width*0.5, minHeight: 0, maxHeight: .infinity)
+                                            .background(.white)
+                                            .font(.system(size: 12, weight: .bold))
+                                            .foregroundColor(Color(red: 52/255,green: 57/255,blue: 68/255))
+                                            .cornerRadius(30)
+                                            .multilineTextAlignment(.center)
+                                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color(red: 52/255,green: 57/255,blue: 68/255), lineWidth: 1))
+                                    }
+                                    Spacer(minLength: 8)
+                                case .okbutton:
+                                    Button {
+                                        okButtonAction?()
+                                    } label: {
+                                        Text("확인")
+                                            .padding()
+                                            .frame(minWidth: 0, maxWidth: geometry.size.width*0.5, minHeight: 0, maxHeight: .infinity)
+                                            .background(Color(red: 52/255,green: 57/255,blue: 68/255))
+                                            .font(.system(size: 12, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .cornerRadius(25)
+                                            .multilineTextAlignment(.center)
+                                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color(red: 52/255,green: 57/255,blue: 68/255), lineWidth: 1))
+                                    }
+                                case .checkbutton:
+                                    Button {
+                                        okButtonAction?()
+                                    } label: {
+                                        Text("확인")
+                                            .padding()
+                                            .frame(minWidth: 0, maxWidth: geometry.size.width*0.5, minHeight: 0, maxHeight: .infinity)
+                                            .background(Color(red: 52/255,green: 57/255,blue: 68/255))
+                                            .font(.system(size: 12, weight: .bold))
+                                            .foregroundColor(.white)
+                                            .cornerRadius(25)
+                                            .multilineTextAlignment(.center)
+                                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color(red: 52/255,green: 57/255,blue: 68/255), lineWidth: 1))
+                                    }
                                 }
-                                Spacer(minLength: 8)
                             }
-                            //right button(default)
-                            Button {
-                                rightButtonAction?()
-                            } label: {
-                                Text(buttonType.rightActionText)
-                                    .padding()
-                                    .frame(minWidth: 0, maxWidth: geometry.size.width*0.5, minHeight: 0, maxHeight: .infinity)
-                                    .background(Color(red: 52/255,green: 57/255,blue: 68/255))
-                                    .font(.system(size: 12, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .cornerRadius(25)
-                                    .multilineTextAlignment(.center)
-                                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color(red: 52/255,green: 57/255,blue: 68/255), lineWidth: 1))
-                            }
-                            
                         }
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 40)
                         .padding([.top], 28)
@@ -161,5 +180,5 @@ struct CustomAlert: View {
 }
 
 #Preview {
-    CustomAlert(presentAlert: .constant(true), alertOptions: [alertOption( option: "메시지입니다.", contentType: .message)], buttonType: .onebutton)
+    CustomAlert(presentAlert: .constant(true), alertOptions: [alertOption( option: "메시지입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .okbutton)])
 }

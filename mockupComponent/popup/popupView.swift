@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct popupView: View {
-    @State private var onebuttonAlert = false
-    @State private var twobuttonAlert = false
+    @State private var okbuttonAlert = false
+    @State private var cancelbuttonAlert = false
+    @State private var toggleAlert = false
     
     var body: some View {
         ZStack {
             VStack{
                 Button(action: {
-                    self.onebuttonAlert.toggle()
+                    self.okbuttonAlert.toggle()
                 }) {
                     Text("oneButton")
                         .padding()
@@ -25,7 +26,17 @@ struct popupView: View {
                 }
                 
                 Button(action: {
-                    self.twobuttonAlert.toggle()
+                    self.cancelbuttonAlert.toggle()
+                }) {
+                    Text("twoButton")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    self.toggleAlert.toggle()
                 }) {
                     Text("twoButton")
                         .padding()
@@ -35,17 +46,25 @@ struct popupView: View {
                 }
             }
             
-            if onebuttonAlert {
-                CustomAlert(presentAlert: $onebuttonAlert, alertOptions: [alertOption(option: "메시지 입니다.", contentType: .message)], buttonType: .onebutton, rightButtonAction: {
-                    onebuttonAlert.toggle()
+            if okbuttonAlert {
+                CustomAlert(presentAlert: $okbuttonAlert, alertOptions: [alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .okbutton)], okButtonAction: {
+                    okbuttonAlert.toggle()
                 })
             }
             
-            if twobuttonAlert {
-                CustomAlert(presentAlert: $twobuttonAlert, alertOptions: [alertOption(option: "메시지 입니다.", contentType: .message)], buttonType: .twobutton, leftButtonAction: {
-                    twobuttonAlert.toggle()
-                }, rightButtonAction: {
-                    twobuttonAlert.toggle()
+            if cancelbuttonAlert {
+                CustomAlert(presentAlert: $cancelbuttonAlert, alertOptions: [alertOption(option: "타이틀 입니다.", contentType: .title), alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .okbutton)], cancelButtonAction: {
+                    cancelbuttonAlert.toggle()
+                }, okButtonAction: {
+                    cancelbuttonAlert.toggle()
+                })
+            }
+            
+            if toggleAlert {
+                CustomAlert(presentAlert: $toggleAlert, alertOptions: [alertOption(option: "토글버튼 입니다.", contentType: .checkbox)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .checkbutton)], cancelButtonAction: {
+                    toggleAlert.toggle()
+                }, okButtonAction: {
+                    toggleAlert.toggle()
                 })
             }
         }
