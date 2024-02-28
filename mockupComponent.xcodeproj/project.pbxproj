@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCE27FFB2B8EFDB500B9636F /* textfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */; };
 		DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */; };
 		DCF0EA3B2B85D473009EF7BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA3A2B85D473009EF7BD /* ContentView.swift */; };
 		DCF0EA3D2B85D475009EF7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textfieldView.swift; sourceTree = "<group>"; };
 		DCF0EA352B85D473009EF7BD /* mockupComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mockupComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockupComponentApp.swift; sourceTree = "<group>"; };
 		DCF0EA3A2B85D473009EF7BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCE27FF92B8EFD9600B9636F /* textfield */ = {
+			isa = PBXGroup;
+			children = (
+				DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */,
+			);
+			path = textfield;
+			sourceTree = "<group>";
+		};
 		DCF0EA2C2B85D473009EF7BD = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +75,7 @@
 				DCF0EA4A2B85D8D5009EF7BD /* RestManager */,
 				DCF0EA462B85D6C9009EF7BD /* TableView */,
 				DCF0EA4C2B85E2B0009EF7BD /* popup */,
+				DCE27FF92B8EFD9600B9636F /* textfield */,
 				DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */,
 				DCF0EA3E2B85D475009EF7BD /* Preview Content */,
 			);
@@ -174,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF0EA3B2B85D473009EF7BD /* ContentView.swift in Sources */,
+				DCE27FFB2B8EFDB500B9636F /* textfieldView.swift in Sources */,
 				DCF0EA522B872DDD009EF7BD /* Documentation.docc in Sources */,
 				DCF0EA4E2B85E2CC009EF7BD /* popupView.swift in Sources */,
 				DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */,

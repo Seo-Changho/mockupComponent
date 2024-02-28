@@ -151,6 +151,7 @@ struct popupView: View {
                 })
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
 }

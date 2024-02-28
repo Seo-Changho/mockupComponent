@@ -21,6 +21,11 @@ struct ContentView: View {
                         .padding()
                 }
                 
+                NavigationLink(destination: textfieldView()) {
+                    Text("Go to textfieldView")
+                        .padding()
+                }
+                
             }
             .navigationTitle("mockupComponent")
         }
