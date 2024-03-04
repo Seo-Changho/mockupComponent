@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCD80EF42B958A9F0033C12B /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD80EF32B958A9F0033C12B /* buttonView.swift */; };
+		DCD80EF62B958D290033C12B /* buttonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD80EF52B958D290033C12B /* buttonStyle.swift */; };
 		DCE27FFB2B8EFDB500B9636F /* textfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */; };
+		DCE280012B8F109800B9636F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE280002B8F109800B9636F /* CustomTextField.swift */; };
 		DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */; };
 		DCF0EA3B2B85D473009EF7BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA3A2B85D473009EF7BD /* ContentView.swift */; };
 		DCF0EA3D2B85D475009EF7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */; };
@@ -19,7 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DCD80EF32B958A9F0033C12B /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonView.swift; sourceTree = "<group>"; };
+		DCD80EF52B958D290033C12B /* buttonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonStyle.swift; sourceTree = "<group>"; };
 		DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textfieldView.swift; sourceTree = "<group>"; };
+		DCE280002B8F109800B9636F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DCF0EA352B85D473009EF7BD /* mockupComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mockupComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockupComponentApp.swift; sourceTree = "<group>"; };
 		DCF0EA3A2B85D473009EF7BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,10 +48,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DCD80EF22B958A780033C12B /* buttonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				DCD80EF32B958A9F0033C12B /* buttonView.swift */,
+				DCD80EF52B958D290033C12B /* buttonStyle.swift */,
+			);
+			path = buttonStyle;
+			sourceTree = "<group>";
+		};
 		DCE27FF92B8EFD9600B9636F /* textfield */ = {
 			isa = PBXGroup;
 			children = (
 				DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */,
+				DCE280002B8F109800B9636F /* CustomTextField.swift */,
 			);
 			path = textfield;
 			sourceTree = "<group>";
@@ -76,6 +92,7 @@
 				DCF0EA462B85D6C9009EF7BD /* TableView */,
 				DCF0EA4C2B85E2B0009EF7BD /* popup */,
 				DCE27FF92B8EFD9600B9636F /* textfield */,
+				DCD80EF22B958A780033C12B /* buttonStyle */,
 				DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */,
 				DCF0EA3E2B85D475009EF7BD /* Preview Content */,
 			);
@@ -187,7 +204,10 @@
 				DCF0EA3B2B85D473009EF7BD /* ContentView.swift in Sources */,
 				DCE27FFB2B8EFDB500B9636F /* textfieldView.swift in Sources */,
 				DCF0EA522B872DDD009EF7BD /* Documentation.docc in Sources */,
+				DCD80EF62B958D290033C12B /* buttonStyle.swift in Sources */,
+				DCD80EF42B958A9F0033C12B /* buttonView.swift in Sources */,
 				DCF0EA4E2B85E2CC009EF7BD /* popupView.swift in Sources */,
+				DCE280012B8F109800B9636F /* CustomTextField.swift in Sources */,
 				DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */,
 				DCF0EA482B85D6E3009EF7BD /* tableview.swift in Sources */,
 				DCF0EA502B85E55B009EF7BD /* CustomAlert.swift in Sources */,
