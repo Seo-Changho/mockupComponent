@@ -96,14 +96,14 @@ struct popupView: View {
             }
             
             if okbuttonAlert {
-                CustomAlert(presentAlert: $okbuttonAlert, alertOptions: [alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .okbutton)], okButtonAction: {
+                CustomAlert(presentAlert: $okbuttonAlert, alertOptions: [alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [alertButtonOption(buttonType: .okbutton)], okButtonAction: {
                     okbuttonAlert.toggle()
                     self.resultString = "success"
                 })
             }
             
             if cancelbuttonAlert {
-                CustomAlert(presentAlert: $cancelbuttonAlert, alertOptions: [alertOption(option: "타이틀 입니다.", contentType: .title), alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .okbutton)], cancelButtonAction: {
+                CustomAlert(presentAlert: $cancelbuttonAlert, alertOptions: [alertOption(option: "타이틀 입니다.", contentType: .title), alertOption(option: "메시지 입니다.", contentType: .message)], buttonOptions: [alertButtonOption(buttonType: .cancelbutton), alertButtonOption(buttonType: .okbutton)], cancelButtonAction: {
                     cancelbuttonAlert.toggle()
                 }, okButtonAction: {
                     cancelbuttonAlert.toggle()
@@ -112,7 +112,7 @@ struct popupView: View {
             }
             
             if toggleAlert {
-                CustomAlert(presentAlert: $toggleAlert, alertOptions: [alertOption(option: "토글버튼을 선택할 건지에 대한 질문 입니다.", contentType: .message), alertOption(option: "토글버튼 입니다.", contentType: .checkbox)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .checkbutton)], cancelButtonAction: {
+                CustomAlert(presentAlert: $toggleAlert, alertOptions: [alertOption(option: "토글버튼을 선택할 건지에 대한 질문 입니다.", contentType: .message), alertOption(option: "토글버튼 입니다.", contentType: .checkbox)], buttonOptions: [alertButtonOption(buttonType: .cancelbutton), alertButtonOption(buttonType: .checkbutton)], cancelButtonAction: {
                     toggleAlert.toggle()
                 }, checkButtonAction: {
                     toggleAlert.toggle()
@@ -121,7 +121,7 @@ struct popupView: View {
             }
             
             if textAlert {
-                CustomAlert(presentAlert: $textAlert, alertOptions: [alertOption(option: "placeholder", contentType: .textfield)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .stringbutton)], cancelButtonAction: {
+                CustomAlert(presentAlert: $textAlert, alertOptions: [alertOption(option: "placeholder", contentType: .textfield)], buttonOptions: [alertButtonOption(buttonType: .cancelbutton), alertButtonOption(buttonType: .stringbutton)], cancelButtonAction: {
                     textAlert.toggle()
                 }, stringButtonAction: { result in
                     textAlert.toggle()
@@ -134,7 +134,7 @@ struct popupView: View {
             }
             
             if pickerAlert {
-                CustomAlert(presentAlert: $textAlert, alertOptions: [alertOption(option: ["apple", "banana", "cherry", "orange"], contentType: .pickerView)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .stringbutton)], cancelButtonAction: {
+                CustomAlert(presentAlert: $textAlert, alertOptions: [alertOption(option: ["apple", "banana", "cherry", "orange"], contentType: .pickerView)], buttonOptions: [alertButtonOption(buttonType: .cancelbutton), alertButtonOption(buttonType: .stringbutton)], cancelButtonAction: {
                     pickerAlert.toggle()
                 }, stringButtonAction: { result in
                     pickerAlert.toggle()
@@ -143,7 +143,7 @@ struct popupView: View {
             }
             
             if radioAlert {
-                CustomAlert(presentAlert: $radioAlert, alertOptions: [alertOption(option: "라디오 버튼 리스트 컨트롤", contentType: .message), alertOption(option: ["1", "2", "3"], contentType: .radioView)], buttonOptions: [buttonOption(buttonType: .cancelbutton), buttonOption(buttonType: .stringbutton)], cancelButtonAction: {
+                CustomAlert(presentAlert: $radioAlert, alertOptions: [alertOption(option: "라디오 버튼 리스트 컨트롤", contentType: .message), alertOption(option: ["1", "2", "3"], contentType: .radioView)], buttonOptions: [alertButtonOption(buttonType: .cancelbutton), alertButtonOption(buttonType: .stringbutton)], cancelButtonAction: {
                     radioAlert.toggle()
                 }, stringButtonAction: { result in
                     radioAlert.toggle()

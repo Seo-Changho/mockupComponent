@@ -14,7 +14,7 @@ struct alertOption: Identifiable {
     var contentType:contentType
 }
 
-struct buttonOption: Identifiable {
+struct alertButtonOption: Identifiable {
     var id = UUID()
     var option:Any?
     var buttonType:buttonType
@@ -64,7 +64,7 @@ struct CustomAlert: View {
     @Binding var presentAlert: Bool
     
     @State var alertOptions: [alertOption] = []
-    @State var buttonOptions : [buttonOption] = []
+    @State var buttonOptions : [alertButtonOption] = []
     @State private var isOn = false
     @State private var textString : String = ""
     
@@ -286,5 +286,5 @@ struct CustomAlert: View {
 }
 
 #Preview {
-    CustomAlert(presentAlert: .constant(true), alertOptions: [alertOption( option: "메시지입니다.", contentType: .message)], buttonOptions: [buttonOption(buttonType: .okbutton)])
+    CustomAlert(presentAlert: .constant(true), alertOptions: [alertOption( option: "메시지입니다.", contentType: .message)], buttonOptions: [alertButtonOption(buttonType: .okbutton)])
 }

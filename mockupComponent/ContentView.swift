@@ -19,6 +19,7 @@ struct ContentView: View {
                 NavigationLink(destination: popupView()) {
                     Text("Go to popupView")
                         .padding()
+                    
                 }
                 
                 NavigationLink(destination: textfieldView()) {
@@ -31,20 +32,15 @@ struct ContentView: View {
                         .padding()
                 }
                 
-//                NavigationLink(destination: textfieldView()) {
-//                    Text("Go to navigationBar")
-//                        .padding()
-//                }
-//                
-//                NavigationLink(destination: textfieldView()) {
-//                    Text("Go to data loading")
-//                        .padding()
-//                }
-//                
-//                NavigationLink(destination: textfieldView()) {
-//                    Text("Go to ImageView")
-//                        .padding()
-//                }
+                NavigationLink(destination: tabbarView()) {
+                    Text("Go to tabbarView")
+                        .padding()
+                }
+                
+                NavigationLink(destination: actionSheetView()) {
+                    Text("Go to actionSheetView")
+                        .padding()
+                }
                 
             }
             .navigationTitle("mockupComponent")

@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+struct customTextModel:Equatable {
+    let maxCount:Int32?
+    let message:String?
+    let validation:String?
+}
 
-enum textType {
+enum textType:Equatable {
+    
     case normal
     case email
     case password
+    case custom(customTextModel)
     
     var getmaxCount:Int32 {
         switch self {
@@ -21,6 +28,8 @@ enum textType {
             return 100
         case .password:
             return 16
+        case .custom(let item):
+            return item.maxCount ?? 0
         }
     }
     
@@ -32,6 +41,8 @@ enum textType {
             return "이메일 체크가 필요합니다."
         case .password:
             return "패스워드 형식에 올바르지 않습니다."
+        case .custom(let item):
+            return item.message ?? ""
         }
     }
     
@@ -46,6 +57,8 @@ enum textType {
                 """
                 ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/])[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/\\w]{8,16}$
                 """
+        case .custom(let item):
+            return item.validation ?? ".*"
         }
     }
 }
