@@ -9,16 +9,25 @@ import SwiftUI
 
 
 struct buttonView: View {
+    
+    @State var tag:Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack{
                     Text("case: ok, cancel, remove, image")
                         .padding([.bottom], 10)
+                    
                     HStack {
+                        
+                        NavigationLink("gogo", value: 1)
+                        
                         CustomButton(buttonStyle: .ok("확인"), buttonState: .enable, okButtonAction: {
+                            self.tag = true
                             print("확인 :: ")
                         })
+                        
                         CustomButton(buttonStyle: .cancel("취소"), buttonState: .enable, cancelButtonAction: {
                             print("취소 :: ")
                         })

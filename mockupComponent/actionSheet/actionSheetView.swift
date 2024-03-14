@@ -38,7 +38,12 @@ struct actionSheetView: View {
             .padding(20)
             
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .onAppear(){
+            print("onAppear ::")
+        }
+        .onDisappear(){
+            print("onDisappear ::")
+        }
     }
 }
 
