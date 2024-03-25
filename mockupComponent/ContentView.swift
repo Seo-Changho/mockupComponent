@@ -11,6 +11,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var phase
     @State private var isEditing:Bool = false
     @State private var presentedMusic = NavigationPath()
+    @State private var searchText = ""
     
     var body: some View {
             
@@ -28,17 +29,29 @@ struct ContentView: View {
                     .padding()
                 NavigationLink("Go to actionSheetView", value: "6")
                     .padding()
+                NavigationLink("Go to appbarView", value: "7")
+                    .padding()
+                NavigationLink("Go to customSearchbar", value: "8")
+                    .padding()
 //                NavigationLink("Go to navigationStackTest", value: "7")
 //                    .padding()
             }
             .navigationTitle("mockupComponent")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarTitleDisplayMode(.inline)
+            .searchable(text: $searchText)
             .toolbar {
-                ToolbarItemGroup(placement: .primaryAction) {
+                ToolbarItem(placement: .topBarLeading){
                     Button(action: {
                         print("button action ::")
                     }){
                         Image(systemName: "swift")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing){
+                    Button(action: {
+                        print("button action 222 ::")
+                    }){
+                        Text("오른쪽")
                     }
                 }
             }
@@ -50,7 +63,9 @@ struct ContentView: View {
                 case "4" : buttonView()
                 case "5" : tabbarView()
                 case "6" : actionSheetView()
+                case "7" : appbarView()
 //                case "7" : navigationStackTest()
+                case "8" : customSearchbar(searchText: .constant(""))
                 default : tableview()
                 }
             }
