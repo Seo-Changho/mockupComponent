@@ -37,10 +37,22 @@ struct mockupComponentApp: App {
         UINavigationBar.appearance().compactAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-    
+    @StateObject var appState = AppState()
     var body: some Scene {
+        
         WindowGroup {
-            ContentView()
+            ZStack{
+                ContentView()
+                
+                if appState.isLoading {
+                    progressView()
+                }
+            }
+            .environmentObject(appState)
         }
     }
+}
+
+class AppState: ObservableObject {
+    @Published var isLoading: Bool = false
 }

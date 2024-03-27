@@ -9,6 +9,7 @@ import SwiftUI
 
 struct actionSheetView: View {
     
+    @EnvironmentObject var appState: AppState
     @State var showingSheet = false
     
     var body: some View {
@@ -21,6 +22,7 @@ struct actionSheetView: View {
             
             Button(action: {
                 self.showingSheet = true
+                appState.isLoading.toggle()
             }) {
                 Text("Action Sheet")
             }

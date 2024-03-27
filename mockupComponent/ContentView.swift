@@ -12,9 +12,10 @@ struct ContentView: View {
     @State private var isEditing:Bool = false
     @State private var presentedMusic = NavigationPath()
     @State private var searchText = ""
+    @EnvironmentObject var appState: AppState
     
     var body: some View {
-            
+
         NavigationStack(path: $presentedMusic) {
             List{
                 NavigationLink("Go to tableView", value: "1")
@@ -33,8 +34,6 @@ struct ContentView: View {
                     .padding()
                 NavigationLink("Go to customSearchbar", value: "8")
                     .padding()
-//                NavigationLink("Go to navigationStackTest", value: "7")
-//                    .padding()
             }
             .navigationTitle("mockupComponent")
             .navigationBarTitleDisplayMode(.inline)
@@ -49,9 +48,9 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing){
                     Button(action: {
-                        print("button action 222 ::")
+                        appState.isLoading.toggle()
                     }){
-                        Text("오른쪽")
+                        Text("progress")
                     }
                 }
             }
@@ -64,8 +63,8 @@ struct ContentView: View {
                 case "5" : tabbarView()
                 case "6" : actionSheetView()
                 case "7" : appbarView()
-//                case "7" : navigationStackTest()
                 case "8" : customSearchbar(searchText: .constant(""))
+                    
                 default : tableview()
                 }
             }
