@@ -32,15 +32,13 @@ struct textfieldView: View {
                 VStack {
                     CustomTextField(placeholder: "기본 커스텀 텍스트 입니다.", isSafe: $nomalBool)
                     
-                    CustomTextField(placeholder: "이메일 커스텀 텍스트 입니다.", textType: .email, isSafe: $emailBool)
+                    CustomTextField(placeholder: "이메일 커스텀 텍스트 입니다.", textType: email(), isSafe: $emailBool)
                     
-                    CustomTextField(placeholder: "비밀번호 커스텀 텍스트 입니다.", textType: .password, isSafe: $passwordBool)
+                    CustomTextField(placeholder: "비밀번호 커스텀 텍스트 입니다.", textType: password(), isSafe: $passwordBool)
                     
-                    CustomTextField(placeholder: "타이틀포함 커스텀 텍스트 입니다.", textType: .normal, title: "타이틀", isSafe: $titleBool)
+                    CustomTextField(placeholder: "타이틀포함 커스텀 텍스트 입니다.", textType: normal(), title: "타이틀", isSafe: $titleBool)
                     
-                    CustomTextField(placeholder: "타이틀포함 비밀번호 텍스트 입니다.", textType: .password, title: "현재 비밀번호", isSafe: $titlePassBool)
-                    
-                    CustomTextField(placeholder: "custom", textType: .custom(customTextModel(maxCount: 10, message: "우아아앙", validation:nil)), isSafe: $custom)
+                    CustomTextField(placeholder: "타이틀포함 비밀번호 텍스트 입니다.", textType: password(), title: "현재 비밀번호", isSafe: $titlePassBool)
                     
                     Spacer()
                     

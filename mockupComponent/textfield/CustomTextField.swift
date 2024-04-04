@@ -13,55 +13,70 @@ struct customTextModel:Equatable {
     let validation:String?
 }
 
-enum textType:Equatable {
-    
-    case normal
-    case email
-    case password
-    case custom(customTextModel)
-    
-    var getmaxCount:Int32 {
-        switch self {
-        case .normal:
-            return 0
-        case .email:
-            return 100
-        case .password:
-            return 16
-        case .custom(let item):
-            return item.maxCount ?? 0
-        }
+protocol textType{
+    func validation()
+    func getMaxCount() -> Int32
+    func getMessage() -> String
+    func getRegularExpression() -> String
+}
+
+struct normal:textType {
+    func validation(){
+        print("nomal ::")
     }
     
-    var getMessage:String{
-        switch self {
-        case .normal:
-            return ""
-        case .email:
-            return "이메일 체크가 필요합니다."
-        case .password:
-            return "패스워드 형식에 올바르지 않습니다."
-        case .custom(let item):
-            return item.message ?? ""
-        }
+    func getMaxCount() -> Int32 {
+        return 0
     }
     
-    var getRegularExpression:String{
-        switch self{
-        case .normal:
-            return ".*"
-        case .email:
-            return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        case .password:
-            return 
-                """
-                ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/])[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/\\w]{8,16}$
-                """
-        case .custom(let item):
-            return item.validation ?? ".*"
-        }
+    func getMessage() -> String {
+        return ""
+    }
+    
+    func getRegularExpression() -> String {
+        return ".*"
     }
 }
+
+struct email:textType {
+    func validation(){
+        print("email ::")
+    }
+    
+    func getMaxCount() -> Int32 {
+        return 100
+    }
+    
+    func getMessage() -> String {
+        return "이메일 체크가 필요합니다."
+    }
+    
+    func getRegularExpression() -> String {
+        return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+    }
+}
+
+struct password:textType {
+    func validation(){
+        print("password ::")
+    }
+    
+    func getMaxCount() -> Int32 {
+        return 16
+    }
+    
+    func getMessage() -> String {
+        return "패스워드 형식에 올바르지 않습니다."
+    }
+    
+    func getRegularExpression() -> String {
+        return 
+            """
+            ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/])[`~!@#$%^&*()_|+\\-=?;:'",.<>\\{\\}\\[\\]\\\\/\\w]{8,16}$
+            """
+    }
+}
+
 
 struct validation {
     var isSafe:Bool
@@ -79,7 +94,8 @@ struct validation {
 struct CustomTextField: View {
     
     @State var placeholder = "placeholder"
-    @State var textType:textType = .normal
+    @State var textType:textType = normal()
+    @State var isSecret:Bool = false
     @State var title = ""
     @Binding var isSafe:Bool
     @State private var textfieldString = ""
@@ -95,7 +111,7 @@ struct CustomTextField: View {
                 .foregroundColor(Color(red: 52/255,green: 57/255,blue: 68/255))
         }
         
-        if textType == .password {
+        if isSecret {
             SecureField(placeholder, text: $textfieldString)
                 .padding([.top, .bottom], 2)
                 .background(Color.white)
@@ -135,16 +151,16 @@ struct CustomTextField: View {
     
     func validationCheck(text:String, type:textType) -> validation {
         
-        guard validationCount(text: text, count: type.getmaxCount) else{
-            return validation(isSafe: false, unsafeMessage: "1-\(type.getmaxCount)자 까지 입력이 가능합니다.")
+        guard validationCount(text: text, count: type.getMaxCount()) else{
+            return validation(isSafe: false, unsafeMessage: "1-\(type.getMaxCount())자 까지 입력이 가능합니다.")
         }
         
         let safe = regularExpression(text: text, type: type)
-        return validation(isSafe: safe, unsafeMessage: type.getMessage)
+        return validation(isSafe: safe, unsafeMessage: type.getMessage())
     }
     
     func regularExpression(text:String, type:textType) -> Bool {
-        return NSPredicate(format:"SELF MATCHES %@", type.getRegularExpression).evaluate(with: text)
+        return NSPredicate(format:"SELF MATCHES %@", type.getRegularExpression()).evaluate(with: text)
     }
     
     func validationCount(text:String, count:Int32) -> Bool{

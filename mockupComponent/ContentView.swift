@@ -34,6 +34,8 @@ struct ContentView: View {
                     .padding()
                 NavigationLink("Go to customSearchbar", value: "8")
                     .padding()
+                NavigationLink("Go to onethings", value: "9")
+                    .padding()
             }
             .navigationTitle("mockupComponent")
             .navigationBarTitleDisplayMode(.inline)
@@ -64,7 +66,7 @@ struct ContentView: View {
                 case "6" : actionSheetView()
                 case "7" : appbarView()
                 case "8" : customSearchbar(searchText: .constant(""))
-                    
+                case "9" : oneThing()
                 default : tableview()
                 }
             }

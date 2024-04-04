@@ -16,6 +16,7 @@
 		DCD80EF62B958D290033C12B /* buttonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD80EF52B958D290033C12B /* buttonStyle.swift */; };
 		DCE27FFB2B8EFDB500B9636F /* textfieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */; };
 		DCE280012B8F109800B9636F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE280002B8F109800B9636F /* CustomTextField.swift */; };
+		DCE3C4A02BB65D33002063D9 /* oneThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE3C49F2BB65D33002063D9 /* oneThing.swift */; };
 		DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */; };
 		DCF0EA3B2B85D473009EF7BD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0EA3A2B85D473009EF7BD /* ContentView.swift */; };
 		DCF0EA3D2B85D475009EF7BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		DCD80EF52B958D290033C12B /* buttonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonStyle.swift; sourceTree = "<group>"; };
 		DCE27FFA2B8EFDB500B9636F /* textfieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textfieldView.swift; sourceTree = "<group>"; };
 		DCE280002B8F109800B9636F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		DCE3C49F2BB65D33002063D9 /* oneThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oneThing.swift; sourceTree = "<group>"; };
 		DCF0EA352B85D473009EF7BD /* mockupComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mockupComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCF0EA382B85D473009EF7BD /* mockupComponentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mockupComponentApp.swift; sourceTree = "<group>"; };
 		DCF0EA3A2B85D473009EF7BD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				DCCC05462B9709EE009C1D34 /* actionSheet */,
 				DC121EFA2BAD13060062019F /* appbar */,
 				DCFBB8FB2BB163A10044E161 /* progressView */,
+				DCE3C49F2BB65D33002063D9 /* oneThing.swift */,
 				DCF0EA3C2B85D475009EF7BD /* Assets.xcassets */,
 				DCF0EA3E2B85D475009EF7BD /* Preview Content */,
 			);
@@ -197,6 +200,8 @@
 			dependencies = (
 			);
 			name = mockupComponent;
+			packageProductDependencies = (
+			);
 			productName = mockupComponent;
 			productReference = DCF0EA352B85D473009EF7BD /* mockupComponent.app */;
 			productType = "com.apple.product-type.application";
@@ -225,6 +230,8 @@
 				Base,
 			);
 			mainGroup = DCF0EA2C2B85D473009EF7BD;
+			packageReferences = (
+			);
 			productRefGroup = DCF0EA362B85D473009EF7BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -263,6 +270,7 @@
 				DCE280012B8F109800B9636F /* CustomTextField.swift in Sources */,
 				DCF0EA392B85D473009EF7BD /* mockupComponentApp.swift in Sources */,
 				DCF0EA482B85D6E3009EF7BD /* tableview.swift in Sources */,
+				DCE3C4A02BB65D33002063D9 /* oneThing.swift in Sources */,
 				DCF0EA502B85E55B009EF7BD /* CustomAlert.swift in Sources */,
 				DCCC05482B970A09009C1D34 /* actionSheetView.swift in Sources */,
 				DCCC05422B9703AB009C1D34 /* tabbarView.swift in Sources */,
